@@ -61,7 +61,6 @@ def fetch_pdf_base64(pdf_url: str) -> bytes:
 
 def summarize_with_gemini(client: genai.Client, pdf_bytes: bytes, pdf_url: str) -> str:
     """Gemini API に PDF を渡して日本語要約表を取得する。"""
-    pdf_b64 = base64.standard_b64encode(pdf_bytes).decode("utf-8")
 
     response = client.models.generate_content(
         model=GEMINI_MODEL,
@@ -94,10 +93,9 @@ def update_index(paper: arxiv.Result, today: str) -> None:
     arxiv_id = paper.get_short_id()
     safe_title = paper.title.replace("|", "｜")
     new_row = f"| {today} | {safe_title} | {arxiv_id} | [リンク](./{arxiv_id}.md) |"
-
+ 
     if INDEX_FILE.exists():
         content = INDEX_FILE.read_text(encoding="utf-8")
-        # ヘッダ行の直後に挿入（ヘッダ + セパレータ行の後）
         header_sep = "|---|---|---|---|"
         if header_sep in content:
             content = content.replace(
@@ -114,39 +112,39 @@ def update_index(paper: arxiv.Result, today: str) -> None:
             "|---|---|---|---|\n"
             f"{new_row}\n"
         )
-
+ 
     INDEX_FILE.write_text(content, encoding="utf-8")
-
-
+ 
+ 
 # ---- メイン処理 -----------------------------------------------------------
-
+ 
 def main() -> None:
     today = date.today().isoformat()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-
+ 
     # Gemini クライアント初期化
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         print("ERROR: GEMINI_API_KEY が設定されていません。", file=sys.stderr)
         sys.exit(1)
     client = genai.Client(api_key=api_key)
-
+ 
     # 処理済み ID の読み込み
     processed_ids = load_processed_ids()
     print(f"処理済み論文数: {len(processed_ids)}")
-
+ 
     # arXiv 検索クエリ
     query = " OR ".join(f"cat:{c}" for c in SEARCH_CATEGORIES)
     search = arxiv.Search(
         query=query,
-        max_results=MAX_RESULTS * 3,  # 重複スキップを考慮して多めに取得
+        max_results=MAX_RESULTS,  # FIX: 3倍取得をやめてレート制限を回避
         sort_by=arxiv.SortCriterion.SubmittedDate,
         sort_order=arxiv.SortOrder.Descending,
     )
-
+ 
     new_papers: list[arxiv.Result] = []
-    client_arxiv = arxiv.Client()
-
+    client_arxiv = arxiv.Client(delay_seconds=5, num_retries=3)  # FIX: レート制限対策
+ 
     for paper in client_arxiv.results(search):
         arxiv_id = paper.get_short_id()
         if arxiv_id in processed_ids:
@@ -155,41 +153,40 @@ def main() -> None:
         new_papers.append(paper)
         if len(new_papers) >= MAX_RESULTS:
             break
-
+ 
     if not new_papers:
         print("本日の新着論文はありませんでした。")
         return
-
+ 
     print(f"新着論文数: {len(new_papers)}")
-
+ 
     for paper in new_papers:
         arxiv_id = paper.get_short_id()
         print(f"\n処理中: [{arxiv_id}] {paper.title}")
-
+ 
         pdf_url = paper.pdf_url
         out_path = OUTPUT_DIR / f"{arxiv_id}.md"
-
+ 
         try:
             print("  PDF を取得中...")
             pdf_bytes = fetch_pdf_base64(pdf_url)
-
+ 
             print("  Gemini API で要約中...")
             summary = summarize_with_gemini(client, pdf_bytes, pdf_url)
-
+ 
             paper_md = build_paper_md(paper, summary, today)
             out_path.write_text(paper_md, encoding="utf-8")
             print(f"  保存: {out_path}")
-
+ 
             update_index(paper, today)
             print("  index.md を更新しました。")
-
+ 
         except Exception as e:
             print(f"  ERROR: {arxiv_id} の処理をスキップします: {e}", file=sys.stderr)
             traceback.print_exc()
             continue
-
+ 
     print("\n完了。")
-
 
 if __name__ == "__main__":
     try:
