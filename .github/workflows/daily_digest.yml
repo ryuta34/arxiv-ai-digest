@@ -2,7 +2,7 @@ name: Daily AI Paper Digest
 
 on:
   schedule:
-    - cron: '0 21 * * *'  # JST 06:00 (UTC 21:00 前日)
+    - cron: '0 21 * * *'
   workflow_dispatch:
 
 permissions:
@@ -11,7 +11,6 @@ permissions:
 jobs:
   digest:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -37,9 +36,9 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add outputs_AI_papers/
           if git diff --staged --quiet; then
-            echo "変更なし。コミットをスキップします。"
+            echo "No changes to commit"
           else
             DATE=$(date +'%Y-%m-%d')
-            git commit -m "📄 Daily AI paper digest - ${DATE}"
+            git commit -m "Daily AI paper digest - ${DATE}"
             git push
           fi
