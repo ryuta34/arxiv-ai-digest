@@ -1,0 +1,45 @@
+name: Daily AI Paper Digest
+
+on:
+  schedule:
+    - cron: '0 21 * * *'  # JST 06:00 (UTC 21:00 前日)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run fetch and summarize script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/fetch_and_summarize.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add outputs_AI_papers/
+          if git diff --staged --quiet; then
+            echo "変更なし。コミットをスキップします。"
+          else
+            DATE=$(date +'%Y-%m-%d')
+            git commit -m "📄 Daily AI paper digest - ${DATE}"
+            git push
+          fi
