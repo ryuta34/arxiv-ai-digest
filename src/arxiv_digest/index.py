@@ -3,10 +3,10 @@
 import re
 from pathlib import Path
 
-HEADER_SEP = "|---|---|---|---|"
+HEADER_SEP = "|---|---|---|---|---|"
 INDEX_HEADER = (
     "# AI論文インデックス\n\n"
-    "| 日付 | タイトル | arXiv ID | リンク |\n"
+    "| 日付 | タイトル | arXiv ID | リンク | 概要 |\n"
     f"{HEADER_SEP}\n"
 )
 
@@ -19,15 +19,16 @@ def load_processed_ids(index_file: Path) -> set[str]:
     return set(re.findall(r"\|\s*([\d]{4}\.\d{4,5}(?:v\d+)?)\s*\|", content))
 
 
-def build_index_row(arxiv_id: str, title: str, today: str) -> str:
+def build_index_row(arxiv_id: str, title: str, today: str, filename: str, overview: str) -> str:
     """index.md に追加する1行を生成する。"""
     safe_title = title.replace("|", "｜")
-    return f"| {today} | {safe_title} | {arxiv_id} | [リンク](./{arxiv_id}.md) |"
+    safe_overview = overview.replace("|", "｜")
+    return f"| {today} | {safe_title} | {arxiv_id} | [リンク](./{filename}) | {safe_overview} |"
 
 
-def update_index(index_file: Path, arxiv_id: str, title: str, today: str) -> None:
+def update_index(index_file: Path, arxiv_id: str, title: str, today: str, filename: str, overview: str) -> None:
     """index.md にエントリをヘッダー直下（新しい順）に追記する。なければ新規作成。"""
-    new_row = build_index_row(arxiv_id, title, today)
+    new_row = build_index_row(arxiv_id, title, today, filename, overview)
 
     if index_file.exists():
         content = index_file.read_text(encoding="utf-8")
