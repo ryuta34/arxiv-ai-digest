@@ -28,7 +28,7 @@ def test_process_paper_creates_markdown_file(tmp_path):
         result = process_paper(client, paper, tmp_path, tmp_path / "index.md", "2024-01-01")
 
     assert result is True
-    assert (tmp_path / "2401.00001.md").exists()
+    assert (tmp_path / "Test_Paper.md").exists()
 
 
 def test_process_paper_updates_index(tmp_path):
@@ -52,7 +52,7 @@ def test_process_paper_returns_false_on_fetch_error(tmp_path):
         result = process_paper(client, paper, tmp_path, tmp_path / "index.md", "2024-01-01")
 
     assert result is False
-    assert not (tmp_path / "2401.00001.md").exists()
+    assert not (tmp_path / "Test_Paper.md").exists()
 
 
 def test_process_paper_returns_false_on_gemini_error(tmp_path):
@@ -64,3 +64,16 @@ def test_process_paper_returns_false_on_gemini_error(tmp_path):
         result = process_paper(client, paper, tmp_path, tmp_path / "index.md", "2024-01-01")
 
     assert result is False
+
+
+def test_process_paper_extracts_overview_into_index(tmp_path):
+    paper = _make_paper()
+    client = MagicMock()
+    summary = "| 項目 | 内容 |\n|---|---|\n| どんなもの？ | 革新的な手法の論文 |\n"
+
+    with patch("arxiv_digest.pipeline.fetch_pdf_bytes", return_value=b"pdf"), \
+         patch("arxiv_digest.pipeline.summarize_with_gemini", return_value=summary):
+        process_paper(client, paper, tmp_path, tmp_path / "index.md", "2024-01-01")
+
+    content = (tmp_path / "index.md").read_text(encoding="utf-8")
+    assert "革新的な手法の論文" in content

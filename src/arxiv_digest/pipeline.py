@@ -1,6 +1,7 @@
 """メイン処理パイプライン"""
 
 import os
+import re
 import sys
 import traceback
 from datetime import date
@@ -14,9 +15,15 @@ from .index import load_processed_ids, update_index
 from .arxiv_client import fetch_new_papers
 from .pdf_client import fetch_pdf_bytes
 from .summarizer import summarize_with_gemini
-from .markdown import build_paper_md
+from .markdown import build_paper_md, title_to_filename
 
 DEFAULT_OUTPUT_DIR = Path(__file__).parent.parent.parent / "outputs_AI_papers"
+
+
+def _extract_overview(summary: str) -> str:
+    """summary から「どんなもの？」の内容を抽出する。"""
+    match = re.search(r'\|\s*どんなもの？\s*\|\s*(.+?)\s*\|', summary)
+    return match.group(1).strip() if match else ""
 
 
 def process_paper(
@@ -38,11 +45,13 @@ def process_paper(
         summary = summarize_with_gemini(client, pdf_bytes, paper.pdf_url)
 
         paper_md = build_paper_md(paper.title, arxiv_id, paper.entry_id, summary, today)
-        out_path = output_dir / f"{arxiv_id}.md"
+        filename = title_to_filename(paper.title) + ".md"
+        out_path = output_dir / filename
         out_path.write_text(paper_md, encoding="utf-8")
         print(f"  保存: {out_path}")
 
-        update_index(index_file, arxiv_id, paper.title, today)
+        overview = _extract_overview(summary)
+        update_index(index_file, arxiv_id, paper.title, today, filename, overview)
         print("  index.md を更新しました。")
 
         return True
