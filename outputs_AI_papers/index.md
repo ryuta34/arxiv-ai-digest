@@ -18,3 +18,13 @@
 | 2026-03-31 | Geometry-aware similarity metrics for neural representations on Riemannian and statistical manifolds | 2603.28764v1 | [リンク](./Geometry-aware_similarity_metrics_for_neural_representations_on_Riemannian_and_statistical_manifolds.md) | ニューラルネットワークの内部表現を、従来の「埋め込み空間における幾何学」ではなく、リーマン幾何学を用いた「内在的幾何学」の観点から比較・評価する新しい枠組み「Metric Similarity Analysis (MSA)」を提案した論文。異なるアーキテクチャや学習手法を持つモデル間の計算メカニズムの差異を、より本質的に明らかにすることを目的としている。 |
 
 | 2026-03-31 | PoseDreamer: Scalable and Photorealistic Human Data Generation Pipeline with Diffusion Models | 2603.28763v1 | [リンク](./PoseDreamer_Scalable_and_Photorealistic_Human_Data_Generation_Pipeline_with_Diffusion_Models.md) | 拡散モデル（Diffusion Models）を活用し、高精度な3Dメッシュアノテーションを伴う50万件以上の高品質な合成人間画像データセットを生成するパイプライン「PoseDreamer」。従来の手動アノテーションやレンダリングベースの手法に代わる、スケーラブルかつ写実的なデータ生成手法を提案している。 |
+
+| 2026-04-01 | OmniRoam: World Wandering via Long-Horizon Panoramic Video Generation | 2603.30045v1 | [リンク](./OmniRoam_World_Wandering_via_Long-Horizon_Panoramic_Video_Generation.md) | ユーザー指定のカメラ軌道に沿って、一貫性のあるパノラマビデオを生成するフレームワーク「OmniRoam」。長時間のシーン探索を可能にするため、粗いプレビュー生成と高精細なリファインの2段階アプローチを採用している。 |
+
+| 2026-04-01 | Video Models Reason Early: Exploiting Plan Commitment for Maze Solving | 2603.30043v1 | [リンク](./Video_Models_Reason_Early_Exploiting_Plan_Commitment_for_Maze_Solving.md) | 動画生成モデルにおける「推論（プランニング）」の内部ダイナミクスを解明した研究。拡散モデルが生成初期段階で大まかな行動計画を確定させる「早期計画コミットメント」現象を発見し、それを活用して迷路解法を効率化する手法を提案した。 |
+
+| 2026-04-01 | Automatic Identification of Parallelizable Loops Using Transformer-Based Source Code Representations | 2603.30040v1 | [リンク](./Automatic_Identification_of_Parallelizable_Loops_Using_Transformer-Based_Source_Code_Representations.md) | ソースコードのループ領域が並列化可能かどうかを判定する、Transformerベースの自動分類手法。DistilBERTを用いてコードの構文的・意味的パターンを学習し、高精度な分類を実現している。 |
+
+| 2026-04-01 | Benchmarking PhD-Level Coding in 3D Geometric Computer Vision | 2603.30038v1 | [リンク](./Benchmarking_PhD-Level_Coding_in_3D_Geometric_Computer_Vision.md) | 3Dコンピュータビジョン（3D-CV）の研究コード実装能力を評価するための、初となるPhDレベルのベンチマーク「GeoCodeBench」を提案した。最新のトップ論文から抽出した100個の複雑な課題と、自動生成された厳格なユニットテストを用いて、LLMのコード生成能力を評価する。 |
+
+| 2026-04-01 | Aligned, Orthogonal or In-conflict: When can we safely optimize Chain-of-Thought? | 2603.30036v1 | [リンク](./Aligned,_Orthogonal_or_In-conflict_When_can_we_safely_optimize_Chain-of-Thought.md) | 強化学習を用いたLLMの事後学習において、Chain-of-Thought (CoT) の監視可能性（monitorability）がなぜ、いつ低下するのかを解明するための概念的フレームワークを提案した論文。報酬関数をCoTに依存するもの（$R_{cot}$）と最終出力に依存するもの（$R_{out}$）に分解し、その関係性からリスクを予測する。 |
