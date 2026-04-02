@@ -28,3 +28,13 @@
 | 2026-04-01 | Benchmarking PhD-Level Coding in 3D Geometric Computer Vision | 2603.30038v1 | [リンク](./Benchmarking_PhD-Level_Coding_in_3D_Geometric_Computer_Vision.md) | 3Dコンピュータビジョン（3D-CV）の研究コード実装能力を評価するための、初となるPhDレベルのベンチマーク「GeoCodeBench」を提案した。最新のトップ論文から抽出した100個の複雑な課題と、自動生成された厳格なユニットテストを用いて、LLMのコード生成能力を評価する。 |
 
 | 2026-04-01 | Aligned, Orthogonal or In-conflict: When can we safely optimize Chain-of-Thought? | 2603.30036v1 | [リンク](./Aligned,_Orthogonal_or_In-conflict_When_can_we_safely_optimize_Chain-of-Thought.md) | 強化学習を用いたLLMの事後学習において、Chain-of-Thought (CoT) の監視可能性（monitorability）がなぜ、いつ低下するのかを解明するための概念的フレームワークを提案した論文。報酬関数をCoTに依存するもの（$R_{cot}$）と最終出力に依存するもの（$R_{out}$）に分解し、その関係性からリスクを予測する。 |
+
+| 2026-04-02 | HippoCamp: Benchmarking Contextual Agents on Personal Computers | 2604.01221v1 | [リンク](./HippoCamp_Benchmarking_Contextual_Agents_on_Personal_Computers.md) | 個人のコンピュータ環境におけるマルチモーダルファイル管理タスクを評価するための新しいベンチマーク「HippoCamp」を提案。実ユーザーから得られたデータに基づき、ファイル検索、内容理解、および多段階の推論能力を測定する環境を実現している。 |
+
+| 2026-04-02 | Universal YOCO for Efficient Depth Scaling | 2604.01220v1 | [リンク](./Universal_YOCO_for_Efficient_Depth_Scaling.md) | 大規模言語モデルの推論時に、計算量を動的に増やすための再帰的計算（recursive computation）を効率的に統合したアーキテクチャ「Universal YOCO (YOCO-U)」です。既存のYOCOアーキテクチャをベースに、モデルの一部を再帰的に反復させることで、モデルパラメータを増やさずに表現力を向上させます。 |
+
+| 2026-04-02 | LAtent Phase Inference from Short time sequences using SHallow REcurrent Decoders (LAPIS-SHRED) | 2604.01216v1 | [リンク](./LAtent_Phase_Inference_from_Short_time_sequences_using_SHallow_REcurrent_Decoders_(LAPIS-SHRED).md) | 空間的に疎で時間的にも極めて短い観測データから、高次元の時空間ダイナミクスを完全に再構築・予測する深層学習フレームワーク「LAPIS-SHRED」を提案した論文。物理シミュレーションによる事前学習を活用し、観測データが断片的（または単一のスナップショットのみ）な状況下でも精度の高い逆問題解法を実現する。 |
+
+| 2026-04-02 | The Recipe Matters More Than the Kitchen:Mathematical Foundations of the AI Weather Prediction Pipeline | 2604.01215v1 | [リンク](./The_Recipe_Matters_More_Than_the_Kitchen_Mathematical_Foundations_of_the_AI_Weather_Prediction_Pipel.md) | AI天気予報モデルの性能を決定づける要因を、建築（アーキテクチャ）ではなく、学習パイプライン（損失関数、学習データ、学習戦略）であると理論的・実証的に明らかにした論文。天気予報におけるAIパイプラインの包括的な評価フレームワーク（HMAS）と、事前評価のための指標（SFS）を構築した。 |
+
+| 2026-04-02 | $\texttt{YC-Bench}$: Benchmarking AI Agents for Long-Term Planning and Consistent Execution | 2604.01212v1 | [リンク](./$_texttt{YC-Bench}$_Benchmarking_AI_Agents_for_Long-Term_Planning_and_Consistent_Execution.md) | 大規模言語モデル（LLM）エージェントの長期的な計画立案と一貫した実行能力を評価する、スタートアップ運営をシミュレーションする新しいベンチマーク「YC-Bench」を提案した論文。エージェントは数百ターンにわたり、タスク選択、リソース配分、敵対的クライアントへの対応を行い、最終的な収益で評価される。 |
