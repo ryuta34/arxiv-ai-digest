@@ -38,3 +38,13 @@
 | 2026-04-02 | The Recipe Matters More Than the Kitchen:Mathematical Foundations of the AI Weather Prediction Pipeline | 2604.01215v1 | [リンク](./The_Recipe_Matters_More_Than_the_Kitchen_Mathematical_Foundations_of_the_AI_Weather_Prediction_Pipel.md) | AI天気予報モデルの性能を決定づける要因を、建築（アーキテクチャ）ではなく、学習パイプライン（損失関数、学習データ、学習戦略）であると理論的・実証的に明らかにした論文。天気予報におけるAIパイプラインの包括的な評価フレームワーク（HMAS）と、事前評価のための指標（SFS）を構築した。 |
 
 | 2026-04-02 | $\texttt{YC-Bench}$: Benchmarking AI Agents for Long-Term Planning and Consistent Execution | 2604.01212v1 | [リンク](./$_texttt{YC-Bench}$_Benchmarking_AI_Agents_for_Long-Term_Planning_and_Consistent_Execution.md) | 大規模言語モデル（LLM）エージェントの長期的な計画立案と一貫した実行能力を評価する、スタートアップ運営をシミュレーションする新しいベンチマーク「YC-Bench」を提案した論文。エージェントは数百ターンにわたり、タスク選択、リソース配分、敵対的クライアントへの対応を行い、最終的な収益で評価される。 |
+
+| 2026-04-03 | EventHub: Data Factory for Generalizable Event-Based Stereo Networks without Active Sensors | 2604.02331v1 | [リンク](./EventHub_Data_Factory_for_Generalizable_Event-Based_Stereo_Networks_without_Active_Sensors.md) | 高価でスパースなLiDAR等のアクティブセンサーに依存せず、安価なRGB画像からイベントベースステレオネットワークを訓練するデータ生成フレームワーク「EventHub」を提案。既存のRGBステレオモデルの知識を蒸留することで、アノテーションコストを削減しつつ高い汎用性を実現する。 |
+
+| 2026-04-03 | ActionParty: Multi-Subject Action Binding in Generative Video Games | 2604.02330v1 | [リンク](./ActionParty_Multi-Subject_Action_Binding_in_Generative_Video_Games.md) | 複数のエージェント（主体）が登場する環境において、各主体に対して個別の行動を正確に割り当て（アクション・バインディング）、制御可能な動画生成を行うマルチエージェント・ワールドモデル。 |
+
+| 2026-04-03 | Generative World Renderer | 2604.02329v1 | [リンク](./Generative_World_Renderer.md) | AAAゲームエンジンから、RGB画像と5つのGバッファ（深度、法線、アルベド、金属度、粗さ）が同期した大規模・高品質なビデオデータセットを構築し、それを用いて動画の逆レンダリングおよび前方レンダリングを最適化する手法。 |
+
+| 2026-04-03 | Modulate-and-Map: Crossmodal Feature Mapping with Cross-View Modulation for 3D Anomaly Detection | 2604.02328v1 | [リンク](./Modulate-and-Map_Crossmodal_Feature_Mapping_with_Cross-View_Modulation_for_3D_Anomaly_Detection.md) | 3D異常検知のための、初のネイティブなマルチビュー・マルチモーダルフレームワーク「MODMAP」。複数の視点からのRGB画像と深度マップを統合し、視点に依存する取得アーティファクト（ノイズ）を克服することで、高精度な3D異常検出とセグメンテーションを実現する。 |
+
+| 2026-04-03 | Steerable Visual Representations | 2604.02327v1 | [リンク](./Steerable_Visual_Representations.md) | 既存の学習済みVision Transformer (ViT) を自然言語で「操縦（Steer）」し、視覚特徴を特定のオブジェクトや概念に集中させる手法「SteerViT」。視覚エンコーダの内部層に軽量なクロスアテンションを挿入することで、表現品質を損なわずに柔軟な制御を可能にする。 |
