@@ -2,6 +2,10 @@
 
 | 日付 | タイトル | arXiv ID | リンク | 要約 |
 |---|---|---|---|---|
+| 2026-05-15 | Aligning Latent Geometry for Spherical Flow Matching in Image Generation | 2605.15193v1 | [リンク](./Aligning_Latent_Geometry_for_Spherical_Flow_Matching_in_Image_Generation.md) | VAE潜在空間における幾何学的な不整合（ラジアル方向の不要な変動）を解消し、生成品質を向上させる手法。潜在空間を固定半径の超球面（hypersphere）に射影し、球面上での測地線補間（slerp）を用いてフローマッチングを行う。 |
+| 2026-05-15 | VGGT-$Ω$ | 2605.15195v1 | [リンク](./VGGT-$Ω$.md) | 大規模なデータとモデルスケーリングを可能にした、フィードフォワード型の3D再構成モデル「VGGT-Ω」。静的および動的なシーン双方において、高精度かつ効率的な再構成を実現し、空間理解のための汎用的な特徴抽出器としても機能する。 |
+| 2026-05-15 | ATLAS: Agentic or Latent Visual Reasoning? One Word is Enough for Both | 2605.15198v1 | [リンク](./ATLAS_Agentic_or_Latent_Visual_Reasoning_One_Word_is_Enough_for_Both.md) | 視覚的な推論過程を「機能トークン（functional token）」として離散的なテキストトークンとして扱う、効率的でスケーラブルな視覚推論フレームワーク「ATLAS」を提案している。外部ツールや画像生成を介さず、標準的な自己回帰生成モデル内で視覚的な操作を完結させる。 |
+| 2026-05-15 | EntityBench: Towards Entity-Consistent Long-Range Multi-Shot Video Generation | 2605.15199v1 | [リンク](./EntityBench_Towards_Entity-Consistent_Long-Range_Multi-Shot_Video_Generation.md) | マルチショット動画生成におけるキャラクター、オブジェクト、場所の長期的な整合性を評価するためのベンチマーク「EntityBench」と、これを改善するためのメモリ拡張生成システム「EntityMem」を提案した研究。 |
 | 2026-05-14 | R-DMesh: Video-Guided 3D Animation via Rectified Dynamic Mesh Flow | 2605.13838v1 | [リンク](./R-DMesh_Video-Guided_3D_Animation_via_Rectified_Dynamic_Mesh_Flow.md) | 単眼ビデオの動きをガイドとして、静的な3Dメッシュを高品質な4Dメッシュアニメーションに変換するフレームワーク。ユーザーが提供するメッシュとビデオの開始ポーズの不一致（ポーズアライメントの欠如）という実用上の課題を解決した。 |
 | 2026-05-14 | Good Agentic Friends Do Not Just Give Verbal Advice: They Can Update Your Weights | 2605.13839v1 | [リンク](./Good_Agentic_Friends_Do_Not_Just_Give_Verbal_Advice_They_Can_Update_Your_Weights.md) | マルチエージェントLLMシステムの通信において、自然言語のメッセージ交換に代わり、送信側エージェントの隠れ状態から受信側モデルへ「一時的な重み摂動（LoRA）」を直接注入する手法「TFLOW」を提案。これにより、KVキャッシュの肥大化や推論コストの増大を抑制しつつ、効率的な共同作業を実現する。 |
 | 2026-05-14 | What is Learnable in Valiant's Theory of the Learnable? | 2605.13840v1 | [リンク](./What_is_Learnable_in_Valiant's_Theory_of_the_Learnable.md) | 1984年のValiantの論文で提案された「正例のみ観測し、帰属クエリが可能な学習モデル」の学習可能性を解明した理論的研究。PAC学習と正例のみ学習（クエリなし）の間に位置する、新たな学習クラスの特性を明らかにしました。 |
