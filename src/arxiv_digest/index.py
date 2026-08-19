@@ -5,6 +5,9 @@ from pathlib import Path
 
 HEADER_SEP = "|---|---|---|---|---|"
 INDEX_HEADER = (
+    "---\n"
+    "title: AI論文インデックス\n"
+    "---\n\n"
     "# AI論文インデックス\n\n"
     "| 日付 | タイトル | arXiv ID | リンク | 概要 |\n"
     f"{HEADER_SEP}\n"
