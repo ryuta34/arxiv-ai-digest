@@ -1,0 +1,19 @@
+title: "arXiv AI論文ダイジェスト"
+description: "arXiv から毎日取得した AI/ML 論文を Gemini で日本語要約するダイジェスト"
+theme: minima
+markdown: kramdown
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "page"
+
+exclude:
+  - scripts/
+  - src/
+  - tests/
+  - requirements.txt
+  - run.sh
+  - conftest.py
+  - CLAUDE.md
